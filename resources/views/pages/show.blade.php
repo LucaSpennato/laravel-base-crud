@@ -6,8 +6,6 @@
 <main>
     <div class="container">
         <div class="row">
-            @forelse ($comics as $comic)
-
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                   <h5 class="card-title">{{ $comic->title }}</h5>
@@ -18,12 +16,6 @@
                   <a href="#" class="card-link">Another link</a>
                 </div>
               </div>
-                
-            @empty
-                <h2>
-                    Non ci sono comics.
-                </h2>
-            @endforelse
         </div>
     </div>
 </main>

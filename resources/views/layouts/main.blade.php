@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    @include('includes.header')
+    {{-- @include('includes.header') --}}
 
     @yield('main-content')
 
