@@ -6,7 +6,8 @@
 <main>
     <div class="container">
         <div class="row">
-            <div class="card" style="width: 18rem;">
+            <div class="card m-auto mt-5" style="width: 18rem;">
+                <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title . '\'s thumbnail' }}">
                 <div class="card-body">
                   <h5 class="card-title">{{ $comic->title }}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{ $comic->series }}</h6>

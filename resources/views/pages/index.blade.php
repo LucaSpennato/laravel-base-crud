@@ -12,7 +12,10 @@
                         <div class="card-body">
                             <ul>
                                 <li class="card-text">
-                                    {{ $comic->title }}
+                                    <h6>
+                                        Title
+                                    </h6>
+                                    <a href="{{ route('comic', $comic->id) }}">{{ $comic->title }}</a>
                                 </li>
                                 <li class="card-text">
                                     {{ $comic->series }}
