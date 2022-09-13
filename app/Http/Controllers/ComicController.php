@@ -42,13 +42,12 @@ class ComicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Comic  $comic
+     * @param string $slug
      * @return \Illuminate\Http\Response
      */
-    public function show(Comic $comic)
+    public function show($slug)
     {
-        // public function show($id) il classico show
-        // $comic = Comic::findOrFail($id);
+        $comic = Comic::where('slug', $slug)->first();
         return view('pages.show', compact('comic'));
     }
 

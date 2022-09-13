@@ -15,7 +15,7 @@
                                     <h6>
                                         Title
                                     </h6>
-                                    <a href="{{ route('comic', $comic->id) }}">{{ $comic->title }}</a>
+                                    <a href="{{ route('comic', $comic->slug) }}">{{ $comic->title }}</a>
                                 </li>
                                 <li class="card-text">
                                     {{ $comic->series }}
