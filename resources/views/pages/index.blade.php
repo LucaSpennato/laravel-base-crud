@@ -6,38 +6,28 @@
     <main>
         <div class="container">
             <div class="row">
-                @forelse ($comics as $comic)
-                    <div class="card col-3">
-                        <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title . '\'s thumbnail' }}">
-                        <div class="card-body">
-                            <ul>
-                                <li class="card-text">
-                                    <h6>
-                                        Title
-                                    </h6>
-                                    <a href="{{ route('comic.show', $comic->slug) }}">{{ $comic->title }}</a>
-                                </li>
-                                <li class="card-text">
-                                    {{ $comic->series }}
-                                </li>
-                                <li class="card-text">
-                                    {{ $comic->type }}
-                                </li>
-                                <li class="card-text">
-                                    {{ $comic->price }}
-                                </li>
-                                <li class="card-text">
-                                    {{ $comic->description }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                @empty
-                    <h2>
-                        Non ci sono comics.
-                    </h2>
-                @endforelse
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Series</th>
+                        <th scope="col">Sale date</th>
+                    </tr>
+                    </thead>
+                    @foreach ($comics as $comic)
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{ $comic->id }}</th>
+                            <td><a href="{{ route('comic.show', $comic->slug) }}">{{ $comic->title }}</a></td>
+                            <td>{{ $comic->price }} - $</td>
+                            <td>{{ $comic->series }}</td>
+                            <td>{{ $comic->sale_date }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody> 
+            </table>
             </div>
         </div>
     </main>
