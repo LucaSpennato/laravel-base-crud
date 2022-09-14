@@ -5,6 +5,9 @@
     <div class="container">
         <div class="row">
             <div class="col-6 mt-5 m-auto">
+                <h2 class="text-center mb-5">
+                    Aggiungi un nuovo Comic
+                </h2>
                 <form method="POST" action="{{ route('comic.store') }}">
                     @csrf
                     <div class="mb-3">

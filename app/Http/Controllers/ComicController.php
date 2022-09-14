@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Comic;
+use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
 
@@ -36,7 +37,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+        $upData = $request->all();
+
+        $addComic = new Comic();
+        $addComic->title = $upData['title'];
+        $addComic->series = $upData['series'];
+        $addComic->thumb = $upData['thumb'];
+        $addComic->type = $upData['type'];
+        $addComic->price = $upData['price'];
+        $addComic->sale_date = $upData['sale_date'];
+        $addComic->description = $upData['description'];
+        $lastComicId = (Comic::orderBy('id', 'desc')->first()->id) +1;
+        $addComic->slug = Str::slug($addComic->title . '-' . $lastComicId, '-');
+        // dd($addComic);
+        $addComic->save();
+
     }
 
     /**
