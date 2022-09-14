@@ -125,7 +125,7 @@ class ComicsTableSeeder extends Seeder
             ],
         ];
 
-        foreach ($comics as $comic) {
+        foreach ($comics as $key => $comic) {
             $newComic = new Comic();
             $newComic->title = $comic['title'];
             $newComic->description = $comic['description'];
@@ -134,7 +134,7 @@ class ComicsTableSeeder extends Seeder
             $newComic->series = $comic['series'];
             $newComic->sale_date = $comic['sale_date'];
             $newComic->type = $comic['type'];
-            $newComic->slug = Str::slug($newComic->title, '-');
+            $newComic->slug = Str::slug($newComic->title . '-' . $key, '-');
             $newComic->save();
         }
 
