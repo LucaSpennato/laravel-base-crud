@@ -52,6 +52,8 @@ class ComicController extends Controller
         // dd($addComic);
         $addComic->save();
 
+        return redirect()->route('comic.show', $addComic->slug);
+
     }
 
     /**
