@@ -13,7 +13,7 @@
             <a class="nav-link {{ request()->routeIs('comic.index') ? 'active text-primary' : '' }}" href="{{ route('comic.index') }}">Comics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('') ? 'active text-warning' : '' }}">Disabled</a>
+            <a class="nav-link {{ request()->routeIs('comic.create') ? 'active text-primary' : '' }}" href="{{ route('comic.create') }}" >Add a new Comic</a>
           </li>
         </ul>
       </div>
