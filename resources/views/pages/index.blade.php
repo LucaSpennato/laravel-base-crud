@@ -9,6 +9,7 @@
                 <table class="table">
                     <thead>
                     <tr>
+                        <th scope="col">Edit</th>
                         <th scope="col">Id</th>
                         <th scope="col">Title</th>
                         <th scope="col">Price</th>
@@ -20,6 +21,9 @@
                     <tbody>
                         <tr>
                             <th scope="row">{{ $comic->id }}</th>
+                            <td>
+                                <a class="btn btn-primary" href="{{ route('comic.edit', $comic->slug) }}">Edit</a>
+                            </td>
                             <td><a href="{{ route('comic.show', $comic->slug) }}">{{ $comic->title }}</a></td>
                             <td>{{ $comic->price }} - $</td>
                             <td>{{ $comic->series }}</td>
