@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-6 mt-5 m-auto">
                 <h2 class="text-center mb-5">
-                    Aggiungi un nuovo Comic
+                    {{ request()->routeIs('comic.create') ? "Aggiungi un nuovo Comic" : "Modifica il Comic" }}
                 </h2>
                 <form method="POST" action="{{ route('comic.store') }}">
                     @csrf
