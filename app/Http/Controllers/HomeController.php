@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $comics = Comic::all();
-        return view('admin.home', compact('comics'));
+        // $comics = Comic::all();
+        return view('admin.home');
     }
 }
