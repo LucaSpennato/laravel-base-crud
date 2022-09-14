@@ -21,7 +21,7 @@
                     <div class="mb-3">
                         <label for="series" class="form-label">Series</label>
                         <input name="series" type="text" class="form-control" id="series"
-                            value="{{ $comic->series ?? '' }}" required>
+                            value="{{ $comic->series ?? '' }}">
                         <div class="form-text">Insert comic's series</div>
                     </div>
                     <div class="mb-3">
