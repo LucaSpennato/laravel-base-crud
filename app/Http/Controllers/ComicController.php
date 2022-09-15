@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Comic;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('pages.create');
+        $types = DB::table('comics')->select('name', 'type')->distinct()->get();
+        return view('pages.create', compact($types));
     }
 
     /**
@@ -77,7 +79,7 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)

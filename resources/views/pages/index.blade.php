@@ -60,10 +60,10 @@
 
 @section('foot-script')
     <script>
-        const deleteForm =  document.querySelectorAll('.delete-action');
-        console.log(deleteForm);
+        const deleteFormButtons = document.querySelectorAll('.delete-action');
+        console.log(deleteFormButtons);
 
-        deleteForm.forEach( delButton => {
+        deleteFormButtons.forEach( delButton => {
             console.log(delButton);
             
             delButton.addEventListener('submit', function(event){
