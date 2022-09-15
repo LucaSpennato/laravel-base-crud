@@ -85,7 +85,7 @@ class ComicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $slug)
@@ -100,23 +100,25 @@ class ComicController extends Controller
         $modComic->price = $putData['price'];
         $modComic->sale_date = $putData['sale_date'];
         $modComic->description = $putData['description'];
-        
+
         $modComic->slug = Str::slug($putData['title'], '-');
 
         $modComic->save();
 
-        return redirect()->route('comic.index');
+        return redirect()->route('comic.show', $modComic->slug);
 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $destComic = Comic::where('slug', $slug)->first();
+
+        return redirect()->route('comic.index');
     }
 }

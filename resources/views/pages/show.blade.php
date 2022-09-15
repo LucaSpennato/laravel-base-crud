@@ -12,8 +12,8 @@
                   <h5 class="card-title">{{ $comic->title }}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{ $comic->series }}</h6>
                   <p class="card-text">{{ $comic->description }}</p>
-                  <p class="card-text">{{ $comic->price }}</p>
-                  <a href="{{ route('comic.edit', $comic->slug) }}" class="card-link">Edit</a>
+                  <p class="card-text">{{ $comic->price }} $USD</p>
+                  <a href="{{ route('comic.edit', $comic->slug) }}" class="card-link btn btn-primary">Edit</a>
                 </div>
               </div>
         </div>
