@@ -40,19 +40,25 @@ class ComicController extends Controller
         $upData = $request->all();
 
         $addComic = new Comic();
-        $addComic->title = $upData['title'];
-        $addComic->series = $upData['series'];
-        $addComic->thumb = $upData['thumb'];
-        $addComic->type = $upData['type'];
-        $addComic->price = $upData['price'];
-        $addComic->sale_date = $upData['sale_date'];
-        $addComic->description = $upData['description'];
-        $lastComicId = (Comic::orderBy('id', 'desc')->first()->id) +1;
-        $addComic->slug = Str::slug($addComic->title . '-' . $lastComicId, '-');
-        // dd($addComic);
-        $addComic->save();
 
-        return redirect()->route('comic.show', $addComic->slug);
+        // $addComic->title = $upData['title'];
+        // $addComic->series = $upData['series'];
+        // $addComic->thumb = $upData['thumb'];
+        // $addComic->type = $upData['type'];
+        // $addComic->price = $upData['price'];
+        // $addComic->sale_date = $upData['sale_date'];
+        // $addComic->description = $upData['description'];
+
+        $lastComicId = (Comic::orderBy('id', 'desc')->first()->id) +1;
+        // $addComic->slug = Str::slug($upData['title'] . '-' . $lastComicId, '-');
+        $upData['slug'] = Str::slug($upData['title'] . '-' . $lastComicId, '-');
+
+        // $addComic->fill($upData);
+        // $addComic->save();
+        // oppure = 
+        $addComic->create($upData);
+
+        return redirect()->route('comic.show', $upData['slug']);
 
     }
 
@@ -93,17 +99,23 @@ class ComicController extends Controller
         $putData = $request->all();
         
         $modComic = Comic::where('slug', $slug)->first();
-        $modComic->title = $putData['title'];
-        $modComic->series = $putData['series'];
-        $modComic->thumb = $putData['thumb'];
-        $modComic->type = $putData['type'];
-        $modComic->price = $putData['price'];
-        $modComic->sale_date = $putData['sale_date'];
-        $modComic->description = $putData['description'];
+        $putData['slug'] = Str::slug($putData['title'], '-');
 
-        $modComic->slug = Str::slug($putData['title'], '-');
-
-        $modComic->save();
+        
+        // $modComic->title = $putData['title'];
+        // $modComic->series = $putData['series'];
+        // $modComic->thumb = $putData['thumb'];
+        // $modComic->type = $putData['type'];
+        // $modComic->price = $putData['price'];
+        // $modComic->sale_date = $putData['sale_date'];
+        // $modComic->description = $putData['description'];
+        // $modComic->slug = Str::slug($putData['title'], '-');
+        
+        
+        // $modComic->fill($putData);
+        // $modComic->save();
+        // oppure = 
+        $modComic->update($putData);
 
         return redirect()->route('comic.show', $modComic->slug);
 

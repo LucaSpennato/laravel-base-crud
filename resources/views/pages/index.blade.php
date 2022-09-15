@@ -14,6 +14,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Price</th>
                         <th scope="col">Series</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Sale date</th>
                         <th scope="col">Delete</th>
                     </tr>
@@ -28,6 +29,7 @@
                             <td><a href="{{ route('comic.show', $comic->slug) }}">{{ $comic->title }}</a></td>
                             <td>{{ $comic->price }} - $</td>
                             <td>{{ $comic->series }}</td>
+                            <td> {{  $comic->type }}</td>
                             <td>{{ $comic->sale_date }}</td>
                             <td>
                                 <form action="{{ route('comic.destroy', $comic->slug) }}" method="POST"
