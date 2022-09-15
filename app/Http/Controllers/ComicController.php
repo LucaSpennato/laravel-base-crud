@@ -57,8 +57,8 @@ class ComicController extends Controller
         // $addComic->save();
         // oppure = 
         $addComic->create($upData);
-
-        return redirect()->route('comic.show', $upData['slug']);
+        // dd($upData['title']);
+        return redirect()->route('comic.show', $upData['slug'])->with('create', $upData['title']);
 
     }
 
@@ -117,7 +117,7 @@ class ComicController extends Controller
         // oppure = 
         $modComic->update($putData);
 
-        return redirect()->route('comic.show', $modComic->slug);
+        return redirect()->route('comic.show', $modComic->slug)->with('update', $putData['title']);
 
     }
 
@@ -131,9 +131,9 @@ class ComicController extends Controller
     {
         $destComic = Comic::where('slug', $slug)->first();
         $destComic->delete();
-
+        // oppure = 
         // Comic::destroy($slug);
 
-        return redirect()->route('comic.index');
+        return redirect()->route('comic.index')->with('delete', $destComic->title);
     }
 }

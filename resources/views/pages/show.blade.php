@@ -6,6 +6,16 @@
 <main>
     <div class="container">
         <div class="row">
+          @if (session('update'))
+            <div class="alert alert-success">
+              {{ session('update') }} è stato modificato con successo
+            </div>
+          @endif
+          @if (session('create'))
+            <div class="alert alert-success">
+                {{ session('create') }} è stato aggiunto con successo.
+            </div>
+            @endif
             <div class="card m-auto mt-5" style="width: 18rem;">
                 <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title . '\'s thumbnail' }}">
                 <div class="card-body">
