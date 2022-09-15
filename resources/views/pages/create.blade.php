@@ -6,11 +6,25 @@
     <div class="container">
         <div class="row">
             <div class="col-6 mt-5 m-auto">
-                <h2 class="text-center mb-5">
-                    {{ request()->routeIs('comic.create') ? "Aggiungi un nuovo Comic" : "Modifica il Comic" }}
-                </h2>
-                <form method="POST" action="{{ route('comic.store') }}">
+                @if (request()->routeIs('comic.create'))
+                    
+                    <h2 class="text-center mb-5">
+                        Aggiungi un nuovo comic
+                    </h2>
+                    <form method="POST" action="{{ route('comic.store') }}">
+
+                @elseif (request()->routeIs('comic.edit'))
+                    
+                    <h2 class="text-center mb-5">
+                        Modifica il comic
+                    </h2>
+
+                    <form method="POST" action="{{ route('comic.update', $comic->slug) }}">
+                        @method('PUT')
+                @endif
+                
                     @csrf
+
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
                         <input name="title" type="text" class="form-control" id="title" 

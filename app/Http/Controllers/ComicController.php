@@ -90,7 +90,10 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $data = $request->all();
+        dd($request->all());
+        
+
     }
 
     /**
