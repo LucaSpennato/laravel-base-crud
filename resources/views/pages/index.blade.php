@@ -32,6 +32,7 @@
                             <td>
                                 <form action="{{ route('comic.destroy', $comic->slug) }}" method="POST">
                                     @method('DELETE')
+                                    @csrf
 
                                     <input type="submit" value="Cancella" class="btn btn-danger">
 

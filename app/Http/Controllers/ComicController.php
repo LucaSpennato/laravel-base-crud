@@ -117,7 +117,6 @@ class ComicController extends Controller
      */
     public function destroy($slug)
     {
-        dd($slug);
         $destComic = Comic::where('slug', $slug)->first();
         $destComic->delete();
 
