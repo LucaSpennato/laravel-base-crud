@@ -9,8 +9,8 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Edit</th>
                         <th scope="col">Id</th>
+                        <th scope="col">Edit</th>
                         <th scope="col">Title</th>
                         <th scope="col">Price</th>
                         <th scope="col">Series</th>
