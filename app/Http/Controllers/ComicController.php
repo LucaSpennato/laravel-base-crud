@@ -16,10 +16,10 @@ class ComicController extends Controller
         'thumb' => 'required|active_url|URL|max:21844',
         'price' => 'required|numeric|max:8|min:1',
         'series' => 'nullable|max:100',
-        'sale_date'=> 'required|date|after_or_equal:1895/05/05|before:2023/12/01',
+        'sale_date'=> 'required|date|after_or_equal:01/01/1800|before:01/01/2100',
         'type' => 'required|exists:comics,type',
     ];
-    protected $ValidateerrorMessages = [
+    protected $validateerrorMessages = [
         'title.required' => 'The title must exist.',
         'title.min' => 'The title must be longer than two words',
         'thumb.URL' => 'The thumb must be an url',
@@ -60,7 +60,7 @@ class ComicController extends Controller
     {
         $upData = $request->all();
 
-        $validateData = $request->validate($this->validateFields, $this->ValidateerrorMessages);
+        $validateData = $request->validate($this->validateFields, $this->validateerrorMessages);
 
         $addComic = new Comic();
         // $addComic->title = $upData['title'];
@@ -121,8 +121,8 @@ class ComicController extends Controller
     public function update(Request $request, $slug)
     {
         $putData = $request->all();
-
-        $validateData = $request->validate($this->validateFields, $this->ValidateerrorMessages);
+        // dd($putData);
+        $validateData = $request->validate($this->validateFields, $this->validateerrorMessages);
 
         $modComic = Comic::where('slug', $slug)->first();
         $putData['slug'] = Str::slug($putData['title'], '-');

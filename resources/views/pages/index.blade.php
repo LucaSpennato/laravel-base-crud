@@ -38,12 +38,12 @@
                             <td> {{  $comic->type }}</td>
                             <td>{{ $comic->sale_date }}</td>
                             <td>
-                                <form action="{{ route('comic.destroy', $comic->slug) }}" method="POST"
+                                <form action="{{ route('comic.destroy', $comic->slug) }}" method="POST" class="delete-action"
                                     data-comic-name="{{ $comic->title }}">
                                     @method('DELETE')
                                     @csrf
 
-                                    <input type="submit" value="Delete" class="btn btn-danger delete-action">
+                                    <input type="submit" value="Delete" class="btn btn-danger">
 
                                 </form>
 
@@ -59,17 +59,15 @@
 @endsection
 
 @section('foot-script')
-    <script>
+    <script defer>
         const deleteFormButtons = document.querySelectorAll('.delete-action');
         console.log(deleteFormButtons);
 
-        deleteFormButtons.forEach( delButton => {
-            console.log(delButton);
+        deleteFormButtons.forEach( (form) => {
+            console.log(form);
             
-            delButton.addEventListener('submit', function(event){
+            form.addEventListener('submit', function(event){
                 event.preventDefault();
-                
-                console.warn(delButton);
 
                 const name = this.getAttribute('data-comic-name');
 
