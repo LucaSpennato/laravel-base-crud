@@ -49,7 +49,7 @@ class ComicController extends Controller
                 'price' => 'required|numeric|max:8|min:1',
                 'series' => 'nullable|max:100',
                 'sale_date'=> 'required|date|after_or_equal:1895/05/05|before:2023/12/01',
-                'type' => 'required',
+                'type' => 'required|exists:comics,type',
             ],
             [
                 
