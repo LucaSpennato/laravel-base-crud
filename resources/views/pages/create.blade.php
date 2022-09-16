@@ -6,6 +6,22 @@
     <div class="container">
         <div class="row">
             <div class="col-6 mt-5 m-auto">
+
+                {{-- Validation errors --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>
+                                    {{ $error }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+
+                {{-- condition for create or edit --}}
                 @if (request()->routeIs('comic.create'))
                     
                     <h2 class="text-center mb-5">

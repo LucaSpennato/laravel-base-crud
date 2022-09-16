@@ -41,8 +41,22 @@ class ComicController extends Controller
     {
         $upData = $request->all();
 
-        $addComic = new Comic();
+        $validateData = $request->validate(
+            [
+                'title' => 'required|min:2|max:100',
+                'description' => 'required|min:10|max:255',
+                'thumb' => 'required|active_url|URL|max:21844',
+                'price' => 'required|numeric|max:8|min:1',
+                'series' => 'nullable|max:100',
+                'sale_date'=> 'required|date|after_or_equal:1895/05/05|before:2023/12/01',
+                'type' => 'required',
+            ],
+            [
+                
+            ],
+        );
 
+        $addComic = new Comic();
         // $addComic->title = $upData['title'];
         // $addComic->series = $upData['series'];
         // $addComic->thumb = $upData['thumb'];
@@ -60,6 +74,7 @@ class ComicController extends Controller
         // oppure = 
         $addComic->create($upData);
         // dd($upData['title']);
+
         return redirect()->route('comic.show', $upData['slug'])->with('create', $upData['title']);
 
     }
