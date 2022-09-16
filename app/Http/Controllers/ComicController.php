@@ -12,11 +12,11 @@ class ComicController extends Controller
 
     protected $validateFields = [
         'title' => 'required|min:2|max:100',
-        'description' => 'required|min:10|max:255',
+        'description' => 'required|min:10|max:21844',
         'thumb' => 'required|active_url|URL|max:21844',
-        'price' => 'required|numeric|max:8|min:1',
+        'price' => 'required|numeric|max:999999.99|min:1',
         'series' => 'nullable|max:100',
-        'sale_date'=> 'required|date|after_or_equal:01/01/1800|before:01/01/2100',
+        'sale_date'=> 'required|date|after_or_equal:01/01/1800',
         'type' => 'required|exists:comics,type',
     ];
     protected $validateerrorMessages = [
@@ -108,7 +108,7 @@ class ComicController extends Controller
         $comic = Comic::where('slug', $slug)->first();
         $types = DB::table('comics')->select('type as type_name')->distinct()->get();
         // dd($comic);
-        return view('pages.create', compact('comic', 'types'));
+        return view('pages.edit', compact('comic', 'types'));
     }
 
     /**
