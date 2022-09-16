@@ -16,7 +16,7 @@ class ComicController extends Controller
         'thumb' => 'required|URL|max:21844',
         'price' => 'required|numeric|max:999999.99|min:1',
         'series' => 'nullable|max:100',
-        'sale_date'=> 'required|date|after_or_equal:01/01/1800',
+        'sale_date'=> 'required|date|after_or_equal:05/05/1895',
         'type' => 'required|exists:comics,type',
     ];
     protected $validateerrorMessages = [
