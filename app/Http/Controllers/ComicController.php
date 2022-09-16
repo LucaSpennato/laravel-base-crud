@@ -19,6 +19,14 @@ class ComicController extends Controller
         'sale_date'=> 'required|date|after_or_equal:1895/05/05|before:2023/12/01',
         'type' => 'required|exists:comics,type',
     ];
+    protected $ValidateerrorMessages = [
+        'title.required' => 'The title must exist.',
+        'title.min' => 'The title must be longer than two words',
+        'thumb.URL' => 'The thumb must be an url',
+        'thumb.max' => 'Whatever you gave, was too dam long',
+        'sale_date.before' => 'Do we sell comic from the future too?',
+        'type.exists' =>  'Stop right there Html heker',
+    ];
 
     /**
      * Display a listing of the resource.
@@ -52,25 +60,7 @@ class ComicController extends Controller
     {
         $upData = $request->all();
 
-        $validateData = $request->validate(
-            [
-                'title' => 'required|min:2|max:100',
-                'description' => 'required|min:10|max:255',
-                'thumb' => 'required|active_url|URL|max:21844',
-                'price' => 'required|numeric|max:8|min:1',
-                'series' => 'nullable|max:100',
-                'sale_date'=> 'required|date|after_or_equal:1895/05/05|before:2023/12/01',
-                'type' => 'required|exists:comics,type',
-            ],
-            [
-                'title.required' => 'The title must exist.',
-                'title.min' => 'The title must be longer than two words',
-                'thumb.URL' => 'The thumb must be an url',
-                'thumb.max' => 'Whatever you gave, was too dam long',
-                'sale_date.before' => 'Do we sell comic from the future too?',
-                'type.exists' =>  'Stop right there Html heker',
-            ]
-        );
+        $validateData = $request->validate($this->validateFields, $this->ValidateerrorMessages);
 
         $addComic = new Comic();
         // $addComic->title = $upData['title'];
@@ -131,6 +121,8 @@ class ComicController extends Controller
     {
         $putData = $request->all();
         
+        $validateData = $request->validate($this->validateFields, $this->ValidateerrorMessages);
+
         $modComic = Comic::where('slug', $slug)->first();
         $putData['slug'] = Str::slug($putData['title'], '-');
 
