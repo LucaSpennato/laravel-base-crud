@@ -106,8 +106,9 @@ class ComicController extends Controller
     public function edit($slug)
     {
         $comic = Comic::where('slug', $slug)->first();
+        $types = DB::table('comics')->select('type as type_name')->distinct()->get();
         // dd($comic);
-        return view('pages.create', compact('comic'));
+        return view('pages.create', compact('comic', 'types'));
     }
 
     /**
@@ -120,7 +121,7 @@ class ComicController extends Controller
     public function update(Request $request, $slug)
     {
         $putData = $request->all();
-        
+
         $validateData = $request->validate($this->validateFields, $this->ValidateerrorMessages);
 
         $modComic = Comic::where('slug', $slug)->first();
