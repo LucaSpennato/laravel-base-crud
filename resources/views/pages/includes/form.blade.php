@@ -22,7 +22,7 @@
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input name="title" type="text" class="form-control @error('title') is-invalid @enderror" id="title"
-                value="{{ $comic->title ?? '' }}" required>
+                value="{{ old('title', $comic->title ?? '') }}" required>
             <div class="form-text">Insert comic's title</div>
 
             @error('title')
@@ -35,7 +35,8 @@
 
         <div class="mb-3">
             <label for="series" class="form-label">Series</label>
-            <input name="series" type="text" class="form-control" id="series"value="{{ $comic->series ?? '' }}">
+            <input name="series" type="text" class="form-control" id="series"
+            value="{{ old('series',$comic->series ?? '') }}">
             <div class="form-text">Insert comic's series</div>
         </div>
 
@@ -43,7 +44,7 @@
         <div class="mb-3">
             <label for="thumb" class="form-label">Thumb</label>
             <input name="thumb" type="text" class="form-control @error('thumb') is-invalid @enderror"
-                id="thumb" value="{{ $comic->thumb ?? '' }}" required>
+                id="thumb" value="{{ old('thumb',$comic->thumb ?? '') }}" required>
             <div class="form-text">Insert comic's thumb</div>
 
             @error('thumb')
@@ -57,7 +58,9 @@
             <label for="type" class="form-label">Type</label>
             <select name="type" class="@error('type') is-invalid @enderror">
                 @foreach ($types as $type)
-                    <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>
+                    <option value="{{ $type->type_name }}"
+                        {{ $type->type_name == old('type', $type->type_name) ? 'selected' : '' }}>
+                        {{ $type->type_name }}</option>
                 @endforeach
             </select>
 
@@ -72,7 +75,7 @@
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input name="price" type="text" class="form-control @error('price') is-invalid @enderror"
-                id="price" value="{{ $comic->price ?? '' }}" required>
+                id="price" value="{{ old('price',$comic->price ?? '') }}" required>
             <div class="form-text">Insert comic's price</div>
 
             @error('price')
@@ -85,7 +88,7 @@
         <div class="mb-3">
             <label for="date" class="form-label">Sale date: </label>
             <input type="date" name="sale_date" class="@error('sale_date') is-invalid @enderror" id="date"
-                value="{{ $comic->sale_date ?? '' }}" required>
+                value="{{ old('sale_date',$comic->sale_date ?? '') }}" required>
             <div class="form-text">Insert comic's date</div>
             @error('sale_date')
                 <div class="alert alert-danger">
@@ -98,7 +101,7 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
                 cols="50" rows="10" required>
-                {{ $comic->description ?? '' }}
+                {{ old('description',$comic->description ?? '') }}
             </textarea>
             <div class="form-text">Insert comic's description</div>
             @error('description')

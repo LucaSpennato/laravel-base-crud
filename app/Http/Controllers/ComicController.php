@@ -13,7 +13,7 @@ class ComicController extends Controller
     protected $validateFields = [
         'title' => 'required|min:2|max:100',
         'description' => 'required|min:10|max:21844',
-        'thumb' => 'required|active_url|URL|max:21844',
+        'thumb' => 'required|URL|max:21844',
         'price' => 'required|numeric|max:999999.99|min:1',
         'series' => 'nullable|max:100',
         'sale_date'=> 'required|date|after_or_equal:01/01/1800',
