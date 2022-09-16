@@ -11,7 +11,7 @@
                 </h2>
             </div>
             @include('pages.includes.form', [
-                'httpMethod' => 'POST'
+                'httpMethod' => 'POST',
                 'routeName' => 'comic.store'
             ])
         </div>

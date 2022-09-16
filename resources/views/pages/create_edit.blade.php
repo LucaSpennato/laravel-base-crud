@@ -1,5 +1,9 @@
 {{-- non più usata, avevo unito sia create che edit nella stessa pagina! --}}
 
+{{-- ! $comic->title ?? '' è una condizione come il ternario. Stampa i dati se è presente il comic->qualcosa, altrimenti stringa vuota ''   --}}
+<input name="title" type="text" class="form-control @error('title') is-invalid @enderror" 
+id="title" value="{{ $comic->title ?? '' }}" required> 
+
 <div class="col-6 mt-5 m-auto">
 
     {{-- upper validation errors --}}

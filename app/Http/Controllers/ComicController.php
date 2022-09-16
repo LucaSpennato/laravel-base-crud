@@ -59,7 +59,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $upData = $request->all();
-
+        
         $validateData = $request->validate($this->validateFields, $this->validateerrorMessages);
 
         $addComic = new Comic();

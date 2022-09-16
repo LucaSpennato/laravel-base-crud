@@ -15,7 +15,7 @@
 
     {{-- il form riceve i dati dai props del rispettivo blade!
         Per quanto il create non ne abbia bisogno, l'update necessita dello slug --}}
-    <form method="POST" action="{{ route($routeName, $comic->slug) }}">
+    <form method="POST" action="{{ route($routeName, $comic->slug ?? '') }}">
         @csrf
         @method($httpMethod)
 
