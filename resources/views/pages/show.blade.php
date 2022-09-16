@@ -20,9 +20,13 @@
                 <img src="{{ $comic->thumb }}" class="card-img-top" alt="{{ $comic->title . '\'s thumbnail' }}">
                 <div class="card-body">
                   <h5 class="card-title">{{ $comic->title }}</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">{{ $comic->series }}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Series: {{ $comic->series }}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Type: {{ $comic->type }}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Sale date: {{ $comic->sale_date }}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Slug: {{ $comic->slug }}</h6>
+                  <h6>Description:</h6>
                   <p class="card-text">{{ $comic->description }}</p>
-                  <p class="card-text">{{ $comic->price }} $USD</p>
+                  <p class="card-text">Price: {{ $comic->price }} $USD</p>
                   <div class="d-flex justify-content-between">
                     <a href="{{ route('comic.edit', $comic->slug) }}" class="card-link btn btn-primary">Edit</a>
                     <form action="{{ route('comic.destroy', $comic->slug) }}" method="POST">

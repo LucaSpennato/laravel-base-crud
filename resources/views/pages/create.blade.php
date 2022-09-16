@@ -46,8 +46,22 @@
                     </div>
                     <div class="mb-3">
                         <label for="type" class="form-label">Type</label>
-                        <input name="type" type="text" class="form-control" id="type"
+
+                        @if (request()->routeIs('comic.create'))
+                            
+                            <select name="type">
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->type_name }}">{{ $type->type_name }}</option>           
+                                @endforeach
+                            </select>
+                                
+                        @elseif (request()->routeIs('comic.edit'))
+
+                            <input name="type" type="text" class="form-control" id="type"
                             value="{{ $comic->type ?? '' }}" required>
+
+                        @endif
+
                         <div class="form-text">Insert comic's type</div>
                     </div>
                     <div class="mb-3">
